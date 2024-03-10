@@ -7,7 +7,7 @@ public class PrettyArray {
             for (int j = 0; j < array.length; j++) {
                 if (array[i] != array[j] - 1 && array[i] != array[j] + 1) {
                     countOfMismatch++;
-                }//find at least 1 pretty member from all array
+                } //find at least 1 pretty member from all array
             }
             if (countOfMismatch == array.length) {
                 return false; // if no one found return ;

@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.EmptyStackException;
 
-
 public class Stack2<T> {
 
     private static class Node<T> {
