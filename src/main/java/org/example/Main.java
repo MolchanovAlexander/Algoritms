@@ -22,5 +22,6 @@ public class Main {
         int[] arr3 = new int[]{0, 2, 3, 4, 5, 6, 7}; // not pretty
         System.out.println(PrettyArray.isArrayPretty(arr2));
         System.out.println(PrettyArray.isBadunPretty(arr3));
+        System.out.println(Primorial.getPrimorialOfNumber(6));
     }
 }
