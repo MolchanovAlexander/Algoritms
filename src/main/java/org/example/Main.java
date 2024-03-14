@@ -23,5 +23,7 @@ public class Main {
         System.out.println(PrettyArray.isArrayPretty(arr2));
         System.out.println(PrettyArray.isBadunPretty(arr3));
         System.out.println(Primorial.getPrimorialOfNumber(6));
+        String[] ssss = new String[]{"Frodo", "Gandalf", "Saruman", "Gollum"};
+        System.out.println(Likes.whoLikesIt(ssss));
     }
 }
