@@ -11,21 +11,26 @@ public class MainApp {
      * Video Reference: https://youtu.be/zIX3zQP0khM
      */
     public static void main(String[] args) {
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-        //List<Integer> bst = new ArrayList<>();
+        BinarySearchTree<Integer> collection = new BinarySearchTree<>();
+       // RecursiveBinarySearchTree<Integer> collection = new RecursiveBinarySearchTree<>();
+        //List<Integer> collection = new ArrayList<>();
 //        bst.insert(10);
 //
 //        bst.traverse();
         System.out.println( " start");
-        for (int i = 0; i < 10_000_000;i++) {
-            bst.insert(ThreadLocalRandom.current().nextInt(10_000_000));
-            //bst.add(ThreadLocalRandom.current().nextInt(10_000_000));
+        var limit = 10_000_000;
+        for (int i = 0; i < limit; i++) {
+            var let = ThreadLocalRandom.current().nextInt(limit);
+            //collection.add(let);  // uncomment for list test
+            collection.insert(let); // uncomment for BST test
         }
-        var time = System.nanoTime();
-        System.out.println(time / 1000 + " mkrsec");
-        for (int i = 0; i < 10;i++) {
-            bst.delete(ThreadLocalRandom.current().nextInt(10_000_000));
-            System.out.println( " " + (System.nanoTime() - time) / 1000 + " mkrsec");
+        for (int i = 0; i < 10; i++) {
+            long start = System.nanoTime();
+            var let = ThreadLocalRandom.current().nextInt(limit);
+            System.out.println("CONTAINS "
+                    + let + " <-> "
+                    + collection.contains(let) + "  __ "
+                    + (System.nanoTime() - start) / 1000 + " mkrSec");
         }
 //        System.out.println("Max is: " + bst.getMax());
 //        System.out.println("Min is: " + bst.getMin());

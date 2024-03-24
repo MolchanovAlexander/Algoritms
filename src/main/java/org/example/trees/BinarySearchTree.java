@@ -3,6 +3,7 @@ package org.example.trees;
 import java.util.Objects;
 
 public class BinarySearchTree<T extends Comparable<T>> {
+
     private Node<T> root;
 
     public void insert(T data) {
@@ -31,11 +32,31 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+    public boolean contains(T element) {
+        if (element == null) {
+            throw new NullPointerException("sfsdf");
+        }
+        return containsRecursive(root, element);
+    }
+
+    private boolean containsRecursive(Node<T> current, T element) {
+        if (current == null) {
+            return false;
+        } else if (element.compareTo(current.data) < 0) { // go left
+            return containsRecursive(current.leftChild, element);
+        } else if (element.compareTo(current.data) > 0) { // go right
+            return containsRecursive(current.rightChild, element);
+        } else {
+            return true;
+        }
+
+    }
+
     public void delete(T data) {
         root = delete(data, root);
     }
 
-    private Node<T> delete (T data, Node<T> node) {
+    private Node<T> delete(T data, Node<T> node) {
         if (node == null) {
             return null;
         }
