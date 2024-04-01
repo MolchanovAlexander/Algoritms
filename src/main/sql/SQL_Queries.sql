@@ -29,3 +29,28 @@ FROM devices
 /* the same */
 SELECT name, price, TRANSLATE(isbn, '56789', 'XXXXX') AS isbn
 FROM devices;
+/*  2 equal solutions below*/
+SELECT
+    CASE
+        WHEN (x * (y + z)) > (x * y * z)
+            and (x * (y + z)) > (x + y * z)
+            and (x * (y + z)) > ((x + y) * z) THEN (x * (y + z))
+        WHEN (x * y * z) > (x * (y + z))
+            and (x * y * z) > (x + y * z)
+            and (x * y * z) > ((x + y) * z) THEN (x * y * z)
+        WHEN (x + y * z) > (x * y * z)
+            and (x + y * z) > (x * (y + z))
+            and (x + y * z) > ((x + y) * z) THEN (x + y * z)
+        WHEN ((x + y) * z)  > (x * y * z)
+            and ((x + y) * z)  > (x + y * z)
+            and ((x + y) * z)  > (x * (y + z)) THEN ((x + y) * z)
+
+        END AS max_result
+FROM numbers;
+SELECT GREATEST(
+               x * (y + z),
+               x * y * z,
+               x + y * z,
+               (x + y) * z
+       ) AS max_result
+FROM numbers;
