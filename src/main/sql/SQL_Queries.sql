@@ -54,3 +54,25 @@ SELECT GREATEST(
                (x + y) * z
        ) AS max_result
 FROM numbers;
+/* Згрупуй всіх людей за віком та порахуй людей, що мають однаковий вік.*/
+SELECT age, COUNT(age) AS people_count
+FROM people
+GROUP BY age
+/* кожне поля одного стовпчика містить довжину рядка поля праворуч */
+SELECT
+    length(name) AS id,
+    length(legs::text) AS name,
+    length(arms::text) AS legs,
+    length(characteristics) AS arms,
+    length(id::text) AS characteristics
+FROM monsters;
+/* do not forget about comma */
+SELECT "US" as location, * FROM ussales
+WHERE price > 50
+
+UNION ALL
+
+SELECT 'EU' as location, * FROM eusales
+WHERE price > 50;
+
+/*  */
