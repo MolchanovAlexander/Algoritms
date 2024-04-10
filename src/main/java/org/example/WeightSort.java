@@ -8,7 +8,9 @@ public class WeightSort {
   public static String orderWeights(String weights) {
     return Stream.of(weights.trim().split(" +"))
       .sorted()
-      .sorted(Comparator.comparingInt(o -> o.chars().map(Character::getNumericValue).sum()))
+      .sorted(Comparator.comparingInt(o -> o.chars()
+              .map(Character::getNumericValue)
+              .sum()))
       .collect(Collectors.joining(" "));
   }
 }

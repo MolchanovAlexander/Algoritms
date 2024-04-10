@@ -17,6 +17,8 @@ public class MentorCubicNumbers {
         }
         return cubes.isEmpty()
                 ? "Unlucky"
-                : String.join(" ", cubes) + " " + cubes.stream().mapToInt(Integer::parseInt).sum() + " Lucky";
+                : String.join(" ", cubes) + " " + cubes.stream()
+                .mapToInt(Integer::parseInt)
+                .sum() + " Lucky";
     }
 }
