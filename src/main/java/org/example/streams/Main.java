@@ -75,7 +75,7 @@ Character.OTHER_PUNCTUATION: for punctuation characters*/
                         c -> c, // Key is character
                         c -> Character.isDigit(c) ? Character.getNumericValue(c) : c // Value is numeric value of character or character itself
                 ));
-
+        System.out.println(FilterAndModifyLettersMap.filterLetters("6el1oWir3d"));
         // Print the resulting map
         resultMap.forEach((key, value) -> System.out.println(key + " -> " + value));
         // usefull .collect(Collectors.groupingBy (Class:: getThing, Collectors.tolist())

@@ -25,5 +25,12 @@ public class Main {
         System.out.println(Primorial.getPrimorialOfNumber(6));
         String[] ssss = new String[]{"Frodo", "Gandalf", "Saruman", "Gollum"};
         System.out.println(Likes.whoLikesIt(ssss));
+        String all = "abcdefghijklmnopqrstuvwxyz";
+        String res = "";
+        String string = "ghaaskjdfsdy";
+
+        string = string.replaceFirst(String.valueOf(all.charAt(0)), "");
+        System.out.println(string);
+
     }
 }

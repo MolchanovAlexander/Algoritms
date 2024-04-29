@@ -105,7 +105,8 @@ select scoreboard.subject as subject, avg(mark) as average_mark
 from scoreboard
          inner join pupil
                     on pupil.id = scoreboard.pupil_id
-where first_name = 'Eugen' and  last_name = 'Tsven'
+where first_name = 'Eugen'
+  and last_name = 'Tsven'
 group by subject
 having avg(mark) > 9
 /*Знайди назви категорій, у яких сума кількості всіх товарів становить понад 80. */
@@ -123,3 +124,51 @@ SELECT score, review, user_id, COUNT(*) AS number_of_repeats
 FROM reviews
 GROUP BY score, review, user_id
 HAVING COUNT(*) > 1;
+/*Враховуючи інформацію про продажі в магазині, порахуй загальний виторг за кожну дату
+  та продукт харчування. */
+SELECT food.name AS FOOD_NAME,
+       sales.date AS DATE ,
+SUM(food.price * sales_details.count) AS TOTAL
+FROM sales
+    INNER JOIN sales_details
+ON sales_details.sale_id = sales.id
+    INNER JOIN food
+    ON food.id = sales_details.food_id
+GROUP BY food.name, sales.date;
+/*Виведи всі стовпці з таблиці persons і з'єднай з таблицею retails, щоб можна було повернути кількість всіх роздрібних
+  продажів і додати кожну роздрібну ціну.
+Виведи всі поля таблиці persons, а також кількість роздрібних продажів як retails_count та суму як retails_rank.
+Відсортуй результат за retails_rank (від найменшого до найбільшого). */
+SELECT persons.id,
+       persons.name,
+       COUNT(retails.id)  AS retails_count,
+       SUM(retails.price) AS retails_rank
+FROM persons
+         LEFT JOIN
+     retails ON persons.id = retails.persons_id
+GROUP BY persons.id, persons.name
+ORDER BY retails_rank;
+/*  */
+SELECT
+    pokemon_name,
+    strength * multiplier AS modifiedStrength,
+    element
+FROM pokemons
+         INNER JOIN
+     multipliers ON multipliers.id = element_id
+WHERE strength * multiplier > 40;
+/* */
+SELECT * FROM wizards
+WHERE (quality1 = 'evil' AND quality2 = 'cunning')
+  OR (quality1 = 'brave' AND quality2 != 'evil')
+  OR (quality1 = 'studious' OR quality2 = 'intelligent')
+  OR (quality1 = 'hufflepuff' OR quality2 = 'hufflepuff')
+ORDER BY id;
+/* Відобрази всю інформацію про компанії, які виробляють пристрої з ціною більше ніж 50,00.
+Виконай це завдання за допомогою оператора EXISTS.  можна з інер джоіном*/
+SELECT * FROM companies C
+WHERE EXISTS (
+    SELECT price
+    FROM devices D
+    WHERE D.company_id = C.id AND price > 50
+)
