@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class Main {
     public static void main(String[] args) {
         //        System.out.println(LevenshteinDistance.distance("abcdef", "azcde"));
@@ -31,6 +35,17 @@ public class Main {
 
         string = string.replaceFirst(String.valueOf(all.charAt(0)), "");
         System.out.println(string);
+        List<String> eee = new ArrayList<>();
+        eee.add("asd");
+        eee.add(null);
+        eee.add("SfRggb");
+        List<Character> ccc = eee.stream()
+                .filter(Objects::nonNull)
+                .map(String::toLowerCase)
+                .map(s ->  s.charAt(0))
+                .sorted()
+                .toList();
+        System.out.println(ccc);
 
     }
 }
