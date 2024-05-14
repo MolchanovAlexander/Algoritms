@@ -172,3 +172,14 @@ WHERE EXISTS (
     FROM devices D
     WHERE D.company_id = C.id AND price > 50
 )
+/* */
+SELECT created_at as day, 
+description, 
+count(name) as count
+FROM events
+WHERE name = 'trained'
+GROUP BY created_at, description
+/* round something by 2 didgits */
+select name, weight, price ,ROUND(price/weight, 2) as price_per_kg
+FROM grocery
+ORDER BY price_per_kg, name
