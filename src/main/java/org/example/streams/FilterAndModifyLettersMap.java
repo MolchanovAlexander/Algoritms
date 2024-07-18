@@ -17,4 +17,4 @@ public class FilterAndModifyLettersMap {
 
     }
 }
-//deleting all chars where index % 2 ! = 0; and making string from this.
+//deleting all chars where index % 2 ! = 0; and making map from this.
