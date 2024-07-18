@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         String input = "a1b2c3d4e5";
         String re123 = FilterAndModifyLetters.filterLetters("HelloWorld");
-        System.out.println(re123);
+        //System.out.println(re123);
         char ch1 = 'A';
         char ch2 = '5';
         char ch3 = '+';

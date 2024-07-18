@@ -6,22 +6,26 @@ import java.util.stream.Collectors;
 
 public class StudentsStatisticService {
     public static Map<Integer, Double> averageGroupGrades(List<Student> students) {
-        Map<Integer, Double> results = students.stream()
-                .collect(Collectors.groupingBy(
-                        Student::getGroupId,
-                        Collectors.flatMapping(student -> student.getGrades()
-                                .stream().peek(System.out::println), Collectors.averagingDouble(mark -> mark))
+        Map<String, Double> studentAvgMarks = students.stream()
+                .collect(Collectors.toMap(
+                        Student::getName,
+                        student -> student.getGrades().stream().mapToInt(Integer::intValue).average().orElse(0)
                 ));
 
-        results.forEach((id, avg) -> System.out.println("Student ID: " + id + ", Average Marks: " + avg));
-//    for (Student student : students) {
-//      results.put(student.getGroupId(),
-//      //averageGroupGrades1(student.getGrades()));
-//    }
-        return results;
+        Map<Integer, Double> groupAvgMarks = students.stream()
+                .collect(Collectors.groupingBy(
+                        Student::getGroupId,
+                        Collectors.averagingDouble(student -> studentAvgMarks.get(student.getName()))
+                ));
+
+        return groupAvgMarks;
     }
 }
 /*
+.collect(Collectors.toMap(
+                        c -> c, // Key is character
+                        c -> (int)c // Value is numeric value of character or character itself
+                ));
 *Маючи список студентів, де кожен студент має ідентифікатор групи, ім’я та список оцінок,
 *  створіть метод averageGroupGrades у класі StudentsStatisticService,
 *  який обчислює середню оцінку для кожної групи та повертає мапу
