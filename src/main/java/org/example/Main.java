@@ -6,7 +6,27 @@ import java.util.Objects;
 import org.example.normal.AlphabeticalSubstring;
 
 public class Main {
+    public static class Null {
+
+        public int hashCode() {
+            return 0;
+        }
+
+        public String toString() {
+            return this.getClass().getSimpleName();
+        }
+
+        public boolean equals(Null o) {
+            return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+        }
+
+
+
+    }
+
     public static void main(String[] args) {
+        Null n = new Null();
+        System.out.println(n.equals(new Null()));
         System.out.println(AlphabeticalSubstring.getLongestAlphabeticalSubstring("dddeeghijjhhhvvwxxxyy") + " result999");
         //        System.out.println(LevenshteinDistance.distance("abcdef", "azcde"));
         //        int[] customers = new int[]{2, 2, 3, 3, 4, 4}; // if checkout - 2 - res - 9
