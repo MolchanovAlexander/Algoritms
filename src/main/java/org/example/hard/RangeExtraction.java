@@ -23,6 +23,7 @@ public class RangeExtraction {
                 }
             }
         }
+
       System.out.println(result);
         return result.deleteCharAt(result.length() - 1).toString();
     }
