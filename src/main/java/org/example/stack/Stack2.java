@@ -4,7 +4,7 @@ import java.util.EmptyStackException;
 
 public class Stack2<T> {
 
-    private static class Node<T> {
+    private class Node<T> {
         private final T value;
         private Node<T> next;
 
