@@ -13,9 +13,7 @@ import java.util.Map;
 public class TaskMap {
 
     public  void preProcess(Map map) {
-        List<Map<Object, Object>> aa = (List<Map<Object, Object>>)map.get("ADVERTISING_DATA");
-        System.out.println(aa.get(2).get("PURPOSE"));
-        System.out.println((map.get("ADVERTISING_DATA")));
+
     }
 
    public enum ErrorCodes {
