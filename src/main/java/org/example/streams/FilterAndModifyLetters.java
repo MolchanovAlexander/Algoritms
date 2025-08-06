@@ -8,7 +8,7 @@ public class FilterAndModifyLetters {
         return IntStream.range(0, input.length())
                 .filter(i -> i % 2 == 0)
                 .mapToObj(input::charAt)
-                .map(Object::toString)
+                .map(o -> o.toString())
                 .collect(Collectors.joining())
                 .toUpperCase();
     }
